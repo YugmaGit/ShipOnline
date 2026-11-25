@@ -1,0 +1,27 @@
+
+
+CREATE TABLE customer (
+  cust_no INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  password VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  phone VARCHAR(20) NOT NULL
+);
+
+
+
+CREATE TABLE request (
+  request_no INT AUTO_INCREMENT PRIMARY KEY,
+  cust_no INT NOT NULL,
+  request_date DATETIME NOT NULL,
+  item_desc VARCHAR(255),
+  weight INT,
+  pickup_address VARCHAR(255),
+  pickup_suburb VARCHAR(100),
+  pickup_datetime DATETIME,
+  receiver_name VARCHAR(100),
+  delivery_address VARCHAR(255),
+  delivery_suburb VARCHAR(100),
+  delivery_state VARCHAR(10),
+  FOREIGN KEY (cust_no) REFERENCES customer(cust_no)
+);
